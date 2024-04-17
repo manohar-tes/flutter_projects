@@ -24,7 +24,7 @@ class _AuthStateScreenState extends State<AuthStateScreen> {
                 child: CircularProgressIndicator(),
               );
             }
-            return LoginScreen();
+            return const LoginScreen();
           }),
     );
   }

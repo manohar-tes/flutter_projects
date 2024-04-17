@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -40,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-              child: Container(
+              child: SizedBox(
                 height: MediaQuery.of(context).size.height * 0.6,
                 child: Card(
                   child: Padding(

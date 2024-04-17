@@ -15,7 +15,6 @@ class _HomeScreenState extends State<HomeScreen> {
   late List<CourcesMetaDataModel> _products;
   int _currentIndex = 0;
   bool _isLoading = false;
-  bool searchBar = false;
   late List<CourcesMetaDataModel> _filteredProducts;
 
   @override
@@ -71,15 +70,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       backgroundColor: Colors.blueGrey.shade100,
-      floatingActionButton: Container(
-        child: Card(
-          color: Colors.blue,
-          child: CupertinoButton(
-            onPressed: _loadMoreProducts,
-            child: const Text(
-              'Load More',
-              style: TextStyle(color: Colors.black),
-            ),
+      floatingActionButton: Card(
+        color: Colors.blue,
+        child: CupertinoButton(
+          onPressed: _loadMoreProducts,
+          child: const Text(
+            'Load More',
+            style: TextStyle(color: Colors.black),
           ),
         ),
       ),
@@ -90,26 +87,24 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Column(
         children: [
-          searchBar == true
-              ? Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextField(
-                    onChanged: (value) {
-                      if (value.length >= 3) {
-                        _filterProducts(value);
-                      } else {
-                        setState(() {
-                          _filteredProducts = List.from(_products);
-                        });
-                      }
-                    },
-                    decoration: InputDecoration(
-                      hintText: 'Search',
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                )
-              : SizedBox(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              onChanged: (value) {
+                if (value.length >= 3) {
+                  _filterProducts(value);
+                } else {
+                  setState(() {
+                    _filteredProducts = List.from(_products);
+                  });
+                }
+              },
+              decoration: const InputDecoration(
+                hintText: 'Search',
+                border: OutlineInputBorder(),
+              ),
+            ),
+          ),
           Expanded(
             child: ListView.builder(
               itemCount: _filteredProducts.length + (_isLoading ? 1 : 0),
@@ -159,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                       ],
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 20,
                                     ),
                                     Column(
@@ -168,7 +163,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.end,
                                       children: [
-                                        Container(
+                                        SizedBox(
                                           width: size.width * 0.6,
                                           child: Text(product.title),
                                         ),

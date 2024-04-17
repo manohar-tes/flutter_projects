@@ -55,7 +55,7 @@ class FirebaseAuthService {
             const SnackBar(content: Text('Password did not match')));
       } else if (e.code == 'invalid-email') {
         ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text('${e.code}')));
+            .showSnackBar(SnackBar(content: Text(e.code)));
       }
     }
     return null;
